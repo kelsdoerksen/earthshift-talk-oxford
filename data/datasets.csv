@@ -1,0 +1,18 @@
+shift,task,pair,bidirectional,train,val,ood
+Scale,Semantic segmentation,Chesapeake: Landsat ↔ NAIP,true,36309,2184,8736
+Scale,Classification,RESISC45 → UCMerced,false,7915,2726,1260
+Scale,Classification,UCMerced → RESISC45,false,420,420,2659
+Temporal,Semantic segmentation,FTW SA: A → B,false,590,72,85
+Temporal,Semantic segmentation,FTW Germany: A → B,false,413,60,700
+Temporal,Semantic segmentation,FTW All: A → B,false,49333,7041,14110
+Temporal,Semantic segmentation,France RPG: 2017 → 2022,false,6352,1172,1998
+Geographic,Semantic segmentation,FTW: Germany → Cambodia,false,612,60,50
+Geographic,Semantic segmentation,FTW: Germany → Denmark,false,612,60,663
+Geographic,Semantic segmentation,BRIGHT: Turkey → Morocco,false,8819,1251,1276
+Geographic,Semantic segmentation,DeepGlobe → DFC2022,false,539,75,175
+Sensor,Classification,m-EuroSAT: RGB → RGE1,false,3240,996,996
+Sensor,Multi-label classification,m-BENv2: S2 → S1,false,20000,4000,4000
+Sensor,Semantic segmentation,Sen1Floods11: S2 → S1,false,252,89,90
+Processing,Multi-label classification,m-BENv2: L2A → L1C,false,20000,4000,4000
+Processing,Semantic segmentation,CloudSen12: L2A → L1C,false,4000,535,975
+Processing,Semantic segmentation,FTW → AI4Boundaries (France),false,5546,678,598

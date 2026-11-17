@@ -1,0 +1,63 @@
+{
+  "_source": "EarthShift CVPR 2027 main-text submission (17 Nov 2026). Every number here is copied from the paper; page numbers given per field. Do not edit by hand without updating the paper reference.",
+  "counts": {
+    "_page": "abstract, p.1; conclusion p.8",
+    "gfms": 7,
+    "baselines": 5,
+    "models_total": 12,
+    "tasks": 18,
+    "shift_types": 5,
+    "experiments_over": 20000
+  },
+  "gfms": ["DOFA", "CROMA", "Clay", "Prithvi-EO-2.0", "TerraFM", "DINOv3 (SAT-493M)", "TerraMind"],
+  "vfms": ["ResNet50 (ImageNet)", "ViT-B/16 (ImageNet)", "CLIP"],
+  "random_init": ["ResNet50 (random)", "ViT-B/16 (random)"],
+  "gfm_design_axes": {
+    "_page": "p.5-6",
+    "native_resolution_m": [0.6, 30],
+    "backbone_params_millions": [87, 304]
+  },
+  "headline_drop": {
+    "_page": "p.7, Sec 6.1",
+    "_text": "GFMs lose about a third of their ID accuracy under distribution shift",
+    "full_finetune_pct": 32,
+    "frozen_backbone_pct": 34,
+    "temporal_drop_pct": 3,
+    "sensor_drop": "about half of ID performance",
+    "scale_drop": "a third to a half",
+    "imagenet_v2_gap_pct": [14, 30]
+  },
+  "kendall_tau": {
+    "_page": "p.7 and Fig 2 (frozen fine-tuning)",
+    "_text": "Kendall rank correlation between models' ID and OOD scores, within task, averaged over tasks in the shift",
+    "Temporal": 0.89,
+    "Scale": 0.66,
+    "Geographic": 0.48,
+    "Processing": 0.36,
+    "Sensor": -0.13
+  },
+  "fits_frozen": {
+    "_page": "Fig 2, p.6 (frozen fine-tuning). OOD = m * ID + b",
+    "_x_range_note": "x_range is only the plotting span, read approximately off Fig 2 axes; it is not a result",
+    "Temporal":   { "m": 0.980, "b": 0.000,  "x_range": [0.22, 0.54] },
+    "Scale":      { "m": 1.175, "b": -0.509, "x_range": [0.44, 0.97] },
+    "Sensor":     { "m": 0.768, "b": -0.187, "x_range": [0.44, 0.96] },
+    "Geographic": { "m": 0.551, "b": 0.031,  "x_range": [0.26, 0.88] },
+    "Processing": { "m": 1.135, "b": -0.210, "x_range": [0.23, 0.72] }
+  },
+  "er_example": {
+    "_page": "p.6-7, Sec 4.3",
+    "_text": "Why the absolute OOD-ID gap misleads: model (b) looks more robust than (a) but is poor everywhere",
+    "models": [
+      { "name": "a", "id": 90, "ood": 70 },
+      { "name": "b", "id": 15, "ood": 10 },
+      { "name": "c", "id": 60, "ood": 60 }
+    ]
+  },
+  "motivating_examples": {
+    "_page": "p.2",
+    "building_damage_new_site_drop_pct": 30,
+    "building_damage_ref": "Benson & Ecker 2020",
+    "field_delineation_ref": "Kerner et al. AAAI-W 2023"
+  }
+}

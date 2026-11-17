@@ -1,0 +1,39 @@
+/* EarthShift talk — global styles. Palette matches the paper figures. */
+:root {
+  --id: #0072B2;        /* Okabe–Ito blue: in-distribution */
+  --ood: #D55E00;       /* Okabe–Ito vermillion: out-of-distribution */
+  --gfm: #2b7bd8;       /* Fig 3: geospatial FMs */
+  --vfm: #ef6a37;       /* Fig 3: generic pretrained */
+  --rnd: #1aab7f;       /* Fig 3: random init */
+  --ink: #1f2328;
+  --muted: #6b7280;
+  --rule: #d6d9de;
+  --paper: #ffffff;
+  --accent: #0b6e4f;
+}
+
+.slidev-layout {
+  font-family: "Liberation Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+}
+.slidev-layout h1 { font-weight: 700; letter-spacing: -0.01em; }
+.slidev-layout h1 + p { opacity: 0.75; }
+
+.id  { color: var(--id);  font-weight: 700; }
+.ood { color: var(--ood); font-weight: 700; }
+.muted { color: var(--muted); }
+.small { font-size: 0.8em; }
+.cite { position: absolute; bottom: 14px; left: 56px; font-size: 11px; color: var(--muted); }
+
+.kicker { text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; color: var(--muted); font-weight: 700; }
+
+.takeaway {
+  border-left: 4px solid var(--ood);
+  padding: 0.4em 0.9em;
+  background: #fff5ee;
+  font-weight: 600;
+}
+
+.todo {
+  background: #fff3a8; color: #6b5300; border-radius: 4px; padding: 0 4px; font-size: 0.8em;
+}

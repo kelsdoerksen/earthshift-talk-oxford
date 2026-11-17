@@ -1,0 +1,13 @@
+{
+  "_note": "Order = order of reveal on the journey slide. Fill every TODO before the talk. 'kind' sets the dot colour: industry | research | humanitarian | academia | next.",
+  "stops": [
+    { "when": "TODO", "org": "Satellite operations", "role": "TODO: role", "kind": "industry", "line": "Where I learned what satellites can and can't see" },
+    { "when": "TODO", "org": "NASA JPL", "role": "TODO: role", "kind": "research", "line": "TODO: one line" },
+    { "when": "2020–2022", "org": "Planet Labs", "role": "TODO: role", "kind": "industry", "line": "TODO: one line" },
+    { "when": "2021–2025", "org": "University of Oxford", "role": "PhD, Computer Science (OATML · AIMS CDT)", "kind": "academia", "line": "Advised by Yarin Gal" },
+    { "when": "TODO", "org": "ESA Φ-lab", "role": "TODO: role", "kind": "research", "line": "TODO: one line" },
+    { "when": "2024–2025", "org": "UNICEF", "role": "Data Scientist, Climate & Environment · Giga PhD fellow", "kind": "humanitarian", "line": "TODO: one line" },
+    { "when": "TODO", "org": "ASU · University of Cape Town", "role": "Postdoc (joint appointment) · Climate Risk Lab", "kind": "academia", "line": "EarthShift (Kerner Lab)" },
+    { "when": "Next", "org": "Planet Labs", "role": "Senior Geospatial AI", "kind": "next", "line": "TODO: confirm you want this public" }
+  ]
+}

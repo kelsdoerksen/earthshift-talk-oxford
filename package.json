@@ -1,0 +1,21 @@
+{
+  "name": "earthshift-talk",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --timeout 60000 --wait 1500",
+    "export:notes": "slidev export-notes",
+    "export:pptx": "slidev export --format pptx --timeout 60000 --wait 1500",
+    "data": "python3 scripts/export_results.py"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.0.0",
+    "@slidev/theme-default": "latest",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.48.0"
+  }
+}
