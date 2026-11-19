@@ -1,19 +1,21 @@
 task,shift
-TODO_chesapeake_landsat_to_naip,Scale
-TODO_chesapeake_naip_to_landsat,Scale
-TODO_resisc45_to_ucmerced,Scale
-TODO_ucmerced_to_resisc45,Scale
-TODO_ftw_sa_season,Temporal
-TODO_ftw_germany_year,Temporal
-TODO_ftw_all_season,Temporal
-TODO_france_rpg_2017_2022,Temporal
-TODO_ftw_germany_cambodia,Geographic
-TODO_ftw_germany_denmark,Geographic
-TODO_bright_turkey_morocco,Geographic
-TODO_deepglobe_dfc2022,Geographic
-TODO_m_eurosat_rgb_rge1,Sensor
-TODO_m_benv2_s2_s1,Sensor
-TODO_sen1floods11_s2_s1,Sensor
-TODO_m_benv2_l2a_l1c,Processing
-TODO_cloudsen12_l2a_l1c,Processing
-TODO_ftw_ai4boundaries,Processing
+Chesapeake-Landsat-NAIP,Scale
+Chesapeake-NAIP-Landsat,Scale
+RESISC45-UCMerced,Scale
+UCMerced-RESISC45,Scale
+SA Temporal,Temporal
+Germany Temporal,Temporal
+ftw-all-window,Temporal
+France RPG 5 year,Temporal
+France RPG 5year,Temporal
+Geo Germany-Cambodia,Geographic
+Geo Germany-Denmark,Geographic
+BRIGHT,Geographic
+DeepGlobe-DFC2022,Geographic
+RGB - RGE1,Sensor
+BenV2-S2-S1,Sensor
+Sen1Floods11-S2-S1,Sensor
+BenV2-L2A-L1C,Processing
+CloudSen-L2A-L1C,Processing
+CloudSEN-L2A-L1C,Processing
+FTW-AI4Boundaries,Processing

@@ -18,7 +18,7 @@ const active = computed(() => [...props.spots].filter(s => s.at <= props.step).s
       v-if="active" class="spot"
       :style="{ left: active.x + '%', top: active.y + '%', width: active.w + '%', height: active.h + '%' }"
     >
-      <div v-if="active.label" class="spot-label">{{ active.label }}</div>
+      <div v-if="active.label" class="spot-label" :class="{ right: active.x + active.w / 2 > 50, above: active.y + active.h > 88 }">{{ active.label }}</div>
     </div>
   </div>
 </template>
@@ -35,4 +35,7 @@ const active = computed(() => [...props.spots].filter(s => s.at <= props.step).s
   position: absolute; top: 100%; left: 0; margin-top: 8px; white-space: nowrap;
   background: var(--ood); color: white; font-weight: 700; font-size: 14px; padding: 3px 8px; border-radius: 4px;
 }
+/* keep the label inside the figure: right-align it for spots on the right half, put it above spots near the bottom */
+.spot-label.right { left: auto; right: 0; }
+.spot-label.above { top: auto; bottom: 100%; margin-top: 0; margin-bottom: 8px; }
 </style>

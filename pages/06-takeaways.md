@@ -2,7 +2,7 @@
 layout: section
 ---
 
-<div class="kicker">Part 4 · ~5 min</div>
+<div class="kicker">Part 4</div>
 
 # What this means
 
@@ -45,23 +45,4 @@ The pretraining-bias point is a hypothesis in the paper (§6.2), so keep the "ma
 Designed so new tasks and models drop straight in: <b>contribute yours.</b>
 
 </div>
-</div>
-
----
-layout: center
-class: text-center
----
-
-<OrbitBackground />
-
-<div class="relative z-10">
-
-# Thank you
-
-<div class="mt-6 text-lg">Code and data: <span class="todo">TODO: links / QR code</span></div>
-
-<div class="mt-4 muted">Co-authors: <span class="todo">TODO (check the double-blind policy before naming them)</span></div>
-
-<div class="mt-10">Kelsey Doerksen · <span class="todo">TODO: contact</span></div>
-
 </div>

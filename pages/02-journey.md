@@ -2,7 +2,7 @@
 layout: section
 ---
 
-<div class="kicker">Part 1 · ~8 min</div>
+<div class="kicker">Part 1</div>
 
 # How I got here
 
@@ -11,7 +11,7 @@ layout: section
 -->
 
 ---
-clicks: 8
+clicks: 6
 ---
 
 # From satellite operations to geospatial AI
@@ -19,63 +19,23 @@ clicks: 8
 <CareerTimeline :step="$clicks" />
 
 <!--
-[2:30–6:00] One click per stop. Edit data/career.json (fill every TODO, yellow on the slide).
-Keep each stop to ~20 s; the story is the thread, not the CV.
-TODO: decide whether to mention the Planet Labs role publicly.
+[2:30–6:00] One click per stop (data/career.json). Keep each stop to ~20 s; the story is the thread, not the CV.
+JPL (2019) → Planet Labs (the globe under it is a schematic constellation) → Oxford DPhil → ESA Φ-lab (Frascati, Giga)
+→ UNICEF (Children's Climate Risk Index) → ASU · University of Cape Town (Climate Risk Lab).
 -->
 
 ---
-
-# What each step taught me
-
-<div class="grid grid-cols-3 gap-6 mt-8">
-
-<div v-click class="p-4 rounded border">
-
-### Operations
-<span class="todo">TODO</span> e.g. what a satellite actually sees, and what it doesn't
-
-</div>
-
-<div v-click class="p-4 rounded border">
-
-### Research
-<span class="todo">TODO</span> e.g. uncertainty matters as much as accuracy (OATML)
-
-</div>
-
-<div v-click class="p-4 rounded border">
-
-### Humanitarian work
-<span class="todo">TODO</span> e.g. models are only useful where they are deployed (UNICEF)
-
-</div>
-
-</div>
-
-<div v-click class="takeaway mt-10">TODO: the one thread that connects them, which leads into EarthShift</div>
-
-<!--
-[6:00–8:00] Lessons, not job titles. The last line should set up "so I started asking: do our models survive the move?"
--->
-
----
-layout: image-right
-image: /tiles/sen1floods11_s2_id.png
+clicks: 4
 ---
 
-# Research threads
+# Research themes
 
-<v-clicks>
-
-- Landslide and monsoon forecasting (Nepal)
-- Agricultural impact prediction
-- Foundation models and satellite embeddings
-- Biodiversity and pollution monitoring
-- <span class="todo">TODO: trim to the 3 you'll actually mention</span>
-
-</v-clicks>
+<div class="grid gap-6 items-center mt-2" style="grid-template-columns: 1fr 230px">
+<ResearchThemes :step="$clicks" />
+<div class="flex justify-center"><MiniOrbitGlobe :size="230" :sats="8" /></div>
+</div>
 
 <!--
-[8:00–10:00] Optional slide: cut if running long. Swap the image for one of your own projects (public/).
+[8:00–10:00] One theme per click. The operations theme comes back at the end of the talk
+(landslide impact forecasting in Nepal, npj Natural Hazards).
 -->

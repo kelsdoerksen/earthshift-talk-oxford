@@ -28,8 +28,8 @@ const sign = (v: number) => (v < 0 ? '− ' : '+ ') + Math.abs(v).toFixed(3)
 </script>
 
 <template>
-  <svg :viewBox="`0 0 ${W} ${H}`" :width="W" :height="H" class="fits">
-    <g class="grid">
+  <svg :viewBox="`0 0 ${W} ${H}`" width="100%" class="fits">
+    <g class="gridlines">
       <line v-for="t in ticks(0.2, 1, 0.1)" :key="'gx'+t" :x1="x(t)" :x2="x(t)" :y1="y(0)" :y2="y(1)" />
       <line v-for="t in ticks(0, 1, 0.1)" :key="'gy'+t" :x1="x(0.2)" :x2="x(1)" :y1="y(t)" :y2="y(t)" />
     </g>
@@ -59,7 +59,8 @@ const sign = (v: number) => (v < 0 ? '− ' : '+ ') + Math.abs(v).toFixed(3)
 </template>
 
 <style scoped>
-.grid line { stroke: #eceef1; }
+.fits { display: block; max-height: 400px; }
+.gridlines line { stroke: #eceef1; }
 .axis text { font-size: 12px; fill: #6b7280; }
 .axis .lab { font-size: 14px; fill: #374151; }
 .yx { stroke: #d93a3a; stroke-width: 2; stroke-dasharray: 6 4; }

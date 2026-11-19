@@ -10,7 +10,7 @@ import { scale, ticks } from '../utils/csv'
 const props = withDefaults(defineProps<{ step?: number; slope?: number; intercept?: number }>(),
   { step: 99, slope: 0.8, intercept: 0 })
 
-const W = 560, H = 420, M = { l: 56, r: 20, t: 16, b: 48 }
+const W = 560, H = 380, M = { l: 56, r: 20, t: 16, b: 48 }
 const x = scale(0, 100, M.l, W - M.r)
 const y = scale(0, 100, H - M.b, M.t)
 const beta = (v: number) => props.slope * v + props.intercept
@@ -29,9 +29,9 @@ const fmt = (v: number) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(Math.ro
 
 <template>
   <div class="er">
-    <svg :viewBox="`0 0 ${W} ${H}`" :width="W" :height="H">
+    <svg :viewBox="`0 0 ${W} ${H}`" width="100%" class="chart">
       <!-- grid + axes -->
-      <g class="grid">
+      <g class="gridlines">
         <line v-for="t in tk" :key="'gx'+t" :x1="x(t)" :x2="x(t)" :y1="y(0)" :y2="y(100)" />
         <line v-for="t in tk" :key="'gy'+t" :x1="x(0)" :x2="x(100)" :y1="y(t)" :y2="y(t)" />
       </g>
@@ -44,7 +44,7 @@ const fmt = (v: number) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(Math.ro
 
       <!-- y = x -->
       <line class="yx" :x1="x(0)" :y1="y(0)" :x2="x(100)" :y2="y(100)" />
-      <text class="yx-lab" :x="x(78)" :y="y(86)">OOD = ID</text>
+      <text class="yx-lab" :x="x(56)" :y="y(66)" text-anchor="end">OOD = ID</text>
 
       <!-- naive gaps -->
       <g :class="['fade', { on: step >= 2 && step < 4 }]">
@@ -57,14 +57,15 @@ const fmt = (v: number) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(Math.ro
       <!-- baseline -->
       <g :class="['fade', { on: step >= 3 }]">
         <line class="beta" :x1="x(0)" :y1="y(beta(0))" :x2="x(100)" :y2="y(beta(100))" />
-        <text class="beta-lab" :x="x(100) - 4" :y="y(beta(100)) + 18" text-anchor="end">β(ID) (illustrative)</text>
+        <text class="beta-lab" :x="x(32)" :y="y(beta(32)) + 20" text-anchor="start">β(ID) (illustrative)</text>
       </g>
 
       <!-- effective robustness -->
       <g :class="['fade', { on: step >= 4 }]">
         <g v-for="m in models" :key="'r'+m.name">
           <line class="rho" :class="{ pos: m.ood - beta(m.id) > 0 }" :x1="x(m.id)" :x2="x(m.id)" :y1="y(beta(m.id))" :y2="y(m.ood)" />
-          <text class="rho-lab" :class="{ pos: m.ood - beta(m.id) > 0 }" :x="x(m.id) - 8" :y="y((beta(m.id) + m.ood) / 2) + 4" text-anchor="end">ρ {{ fmt(m.ood - beta(m.id)) }}</text>
+          <text class="rho-lab" :class="{ pos: m.ood - beta(m.id) > 0 }" :x="Math.abs(m.ood - beta(m.id)) < 5 ? x(m.id) + 14 : x(m.id) - 8" :y="Math.abs(m.ood - beta(m.id)) < 5 ? y(m.ood) + 20 : y((beta(m.id) + m.ood) / 2) + 4"
+            :text-anchor="Math.abs(m.ood - beta(m.id)) < 5 ? 'start' : 'end'">ρ {{ fmt(m.ood - beta(m.id)) }}</text>
         </g>
       </g>
 
@@ -82,22 +83,23 @@ const fmt = (v: number) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(Math.ro
 
 <style scoped>
 .er { display: flex; flex-direction: column; align-items: center; }
-.grid line { stroke: #eceef1; }
+.chart { display: block; max-height: 360px; }
+.gridlines line { stroke: #eceef1; }
 .axis text { font-size: 12px; fill: #6b7280; }
 .axis .lab { font-size: 14px; fill: #374151; }
 .yx { stroke: #d93a3a; stroke-width: 2.5; }
-.yx-lab { fill: #d93a3a; font-size: 12px; font-weight: 700; }
+.yx-lab { fill: #d93a3a; font-size: 12px; font-weight: 700; paint-order: stroke; stroke: white; stroke-width: 4px; }
 .beta { stroke: #111; stroke-width: 2; stroke-dasharray: 7 5; }
 .beta-lab { font-size: 12px; fill: #111; }
 .gap { stroke: #9ca3af; stroke-width: 2; stroke-dasharray: 3 3; }
 .gap-lab { font-size: 13px; fill: #6b7280; font-weight: 700; }
 .rho { stroke: var(--ood); stroke-width: 3; }
 .rho.pos { stroke: var(--id); }
-.rho-lab { font-size: 13px; font-weight: 700; fill: var(--ood); }
+.rho-lab { font-size: 13px; font-weight: 700; fill: var(--ood); paint-order: stroke; stroke: white; stroke-width: 4px; stroke-linejoin: round; }
 .rho-lab.pos { fill: var(--id); }
 .pt { fill: #1f2328; }
 .pt-lab { font-weight: 700; font-size: 15px; }
 .fade { opacity: 0; transition: opacity 500ms ease; }
 .fade.on { opacity: 1; }
-.caption { min-height: 1.6em; font-size: 16px; margin-top: 4px; text-align: center; }
+.caption { min-height: 2.6em; font-size: 14px; line-height: 1.3; margin-top: 2px; text-align: center; max-width: 100%; }
 </style>

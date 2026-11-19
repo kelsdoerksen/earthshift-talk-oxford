@@ -1,0 +1,34 @@
+{
+  "_source": "Doerksen et al., 'AI-powered sub-seasonal forecasting of monsoon-triggered landslide impacts in Nepal', npj Natural Hazards (2026), https://doi.org/10.1038/s44304-026-00282-9. Copied from the paper (refs/s44304-026-00282-9_reference.pdf); page numbers per field.",
+  "citation": "Doerksen et al., npj Natural Hazards (2026)",
+  "doi": "10.1038/s44304-026-00282-9",
+  "context": {
+    "_page": "p.2",
+    "impact_events": "4,865",
+    "dead_or_missing": "2,346",
+    "homes_destroyed": "6,392",
+    "period": "13 May 2011 – 11 Nov 2025",
+    "monsoon_rain_share": "~80%",
+    "seasonal_outlook_lead": "1–2 months",
+    "short_term_forecast": "1–3 day"
+  },
+  "setup": {
+    "_page": "p.3, p.8",
+    "forecast_window_days": 14,
+    "districts": 77,
+    "train_years": "2016–2022",
+    "test_years": "2023 and 2024"
+  },
+  "results": {
+    "_page": "p.5 (Discussion)",
+    "monsoon_f1": "0.75–0.85",
+    "monsoon_months": "June–September"
+  },
+  "operations": {
+    "_page": "p.5, p.6, p.8–10",
+    "ecmwf_lag_days": "~2",
+    "imerg_late_run_hours": "~14",
+    "false_negative_weight": 2,
+    "impact_increase_2023_2024": "67%"
+  }
+}

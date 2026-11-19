@@ -1,6 +1,6 @@
 ---
 theme: default
-title: "When the world shifts: robustness of geospatial foundation models"
+title: "Implementing AI in the real world: robustness of geospatial foundation models under real-world distribution shifts"
 info: |
   45-minute talk: my path into geospatial AI, the state of the field, and EarthShift —
   a benchmark for robustness to real-world distribution shifts in Earth observation.
@@ -22,13 +22,13 @@ class: text-center
 
 <div class="relative z-10">
 
-<div class="kicker">TODO: venue · date</div>
+<div class="kicker">University of Oxford · Autonomous Intelligent Machines and Systems AGM 2026 · 19 November 2026</div>
 
-# When the world shifts
+# “Implementing AI in the real world”
 
-### Robustness of geospatial foundation models under real-world distribution shift
+### Robustness of geospatial foundation models under real-world distribution shifts
 
-<div class="mt-10 text-lg">Kelsey Doerksen</div>
+<div class="mt-10 text-lg">Dr. Kelsey Doerksen</div>
 <div class="muted text-sm">ASU · University of Cape Town · Climate Risk Lab</div>
 
 </div>
@@ -59,4 +59,8 @@ src: ./pages/05-earthshift-results.md
 
 ---
 src: ./pages/06-takeaways.md
+---
+
+---
+src: ./pages/07-operations.md
 ---

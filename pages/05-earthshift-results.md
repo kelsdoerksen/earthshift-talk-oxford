@@ -47,11 +47,11 @@ clicks: 5
 clicks: 3
 ---
 
-# Where the models actually sit
+# Robustness varies across shift type
 
 <Spotlight src="/figures/paper/fig2_id_vs_ood_frozen.png" width="72%" :step="$clicks" :spots="[
   { x: 6.5, y: 3.5, w: 28, h: 41, at: 1, label: 'Temporal: points hug the diagonal' },
-  { x: 72, y: 3.5, w: 28, h: 41, at: 2, label: 'Sensor: large, heterogeneous drops' },
+  { x: 71.5, y: 3.5, w: 27.5, h: 41, at: 2, label: 'Sensor: large, heterogeneous drops' },
   { x: 12.5, y: 76, w: 9.5, h: 10, at: 3, label: 'Germany → Cambodia, far below Denmark' },
 ]" />
 
@@ -84,7 +84,7 @@ clicks: 3
 
 <div class="kicker">Finding 2</div>
 
-# Earth observation pretraining doesn't buy robustness
+# Pretraining on Earth Observation data does not mean models are robust to EO tasks
 
 <Spotlight src="/figures/paper/fig3_ood_vs_er.png" width="92%" :step="$clicks" :spots="[
   { x: 4.5, y: 5, w: 46.5, h: 79, at: 1, label: 'Full fine-tuning' },
@@ -94,7 +94,7 @@ clicks: 3
 
 <!--
 GFMs show little to no robustness advantage over ImageNet / CLIP models (§6.2).
-Swap this for <RobustnessMap :step="$clicks" protocol="HEAD" /> once data/model_summary.csv is filled.
+The next slide animates the same chart from data/model_summary.csv.
 -->
 
 ---
@@ -103,44 +103,33 @@ clicks: 3
 
 # Overall OOD vs effective robustness (animated)
 
-<div class="flex justify-center"><RobustnessMap protocol="FULL" :step="$clicks" /></div>
+<div class="grid grid-cols-2 gap-4 mt-1">
+  <RobustnessMap protocol="FULL" title="Full fine-tuning" :step="$clicks" :legend="false" :width="430" />
+  <RobustnessMap protocol="HEAD" title="Frozen backbone" :step="$clicks" :legend="false" :width="430" />
+</div>
+<div class="flex justify-center gap-8 text-sm mt-1">
+  <span v-click="1"><span class="fam" style="background: var(--gfm)" />Geospatial FM</span>
+  <span v-click="2"><span class="fam" style="background: var(--vfm)" />Generic pretrained</span>
+  <span v-click="3"><span class="fam" style="background: var(--rnd)" />Random init</span>
+</div>
+
+<style>
+.fam { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+</style>
 
 <!--
 Click 1: GFMs. Click 2: generic pretrained. Click 3: random init.
-Needs data/model_summary.csv (scripts/export_results.py). Shows an empty-state card until then.
+Data: data/model_summary.csv, generated 17 Nov 2026 with
+  npm run data -- ../CVPR/AllTasks_for_plotting-CVPR-Full.csv:FULL ../CVPR/AllTasks_for_plotting-CVPR-Head.csv:HEAD --id-col "Avg Test ID Acc" --ood-col "Avg Test OOD Acc" --points
+HEAD (frozen) matches paper Fig. 3. FULL is close but not identical: the Full CSV has no RESISC45→UCMerced results for
+clay, clip, croma, dinov3_large_sat and resnet50_imgnet. Re-run the command when those finish.
 -->
-
----
-
-<div class="kicker">Finding 3</div>
-
-# Fine-tuning the encoder doesn't fix it
-
-<div class="grid grid-cols-2 gap-10 mt-8 text-lg">
-
-<div v-click>
-
-When the encoder is fine-tuned too, **robustness does not improve, and sometimes gets worse**.
-
-</div>
-
-<div v-click class="takeaway">
-
-Better adaptation to the training distribution ≠ better generalisation beyond it.
-
-</div>
-
-</div>
-
-<div v-click class="mt-10">
-  <span class="todo">TODO: drop in a full vs frozen comparison, e.g. two &lt;SlopeChart&gt;s side by side for Scale</span>
-</div>
 
 ---
 clicks: 5
 ---
 
-<div class="kicker">Finding 4</div>
+<div class="kicker">Finding 3</div>
 
 # The best ID model isn't always the best OOD model
 
@@ -154,13 +143,14 @@ clicks: 5
 clicks: 3
 ---
 
-# One shift up close
+# One shift up close: <span style="color: #D55E00">Sensor shift</span>
 
 <div class="flex justify-center">
 <SlopeChart shift="Sensor" protocol="HEAD" :step="$clicks" :highlight="['clip', 'dofa']" />
 </div>
 
 <!--
-Click 1: ID scores. Click 2: lines drop to OOD. Click 3: highlight models.
-TODO: choose the shift and models to spotlight; needs data/model_summary.csv.
+Sensor shift, frozen backbone (data/model_summary.csv). Click 1: ID scores. Click 2: lines drop to OOD.
+Click 3: highlight DOFA (a GFM) and CLIP (generic pretrained): they start and end in nearly the same place,
+so EO pretraining buys no extra robustness here.
 -->

@@ -1,0 +1,35 @@
+{
+  "_source": "Field-level facts for Part 2 (state of geospatial AI). None of these are EarthShift results. Each block says where it came from; check before presenting.",
+  "coding_leaderboard": {
+    "_source": "Artificial Analysis Coding Agent Index (headline chart, scores as displayed, rounded), https://artificialanalysis.ai/agents/coding-agents, read 9 Nov 2026. Copied from Hannah Kerner's SatSummit 2026 'State of GeoAI' deck data (llm_leaderboard.csv).",
+    "as_of": "9 Nov 2026",
+    "rows": [
+      { "rank": 1, "model": "Claude Opus 5.5", "score": 62 },
+      { "rank": 2, "model": "Gemini 4 Carbon", "score": 59 },
+      { "rank": 3, "model": "Claude Sonnet 5.5", "score": 59 },
+      { "rank": 4, "model": "GPT-6 Astra", "score": 55 },
+      { "rank": 5, "model": "GPT-6.1 Sol", "score": 54 }
+    ]
+  },
+  "gfm_count": {
+    "_source": "Kelsey's TreeSense talk, slide 7 ('75+ models to choose from and growing [ref]'). The reference is still a placeholder there: add it before presenting.",
+    "label": "75+",
+    "ref": null
+  },
+  "sota_quotes": {
+    "_source": "Abstracts fetched from the arXiv API on 16 Nov 2026 (via Hannah Kerner's SatSummit 2026 deck, sota_quotes.json). Each excerpt is verbatim; ellipses mark cuts. Papers whose abstracts do not use the phrase (SkySense, SpectralGPT, Prithvi-EO-2.0, Copernicus-FM, SMARTIES, msGFM, SSL4EO-S12) are not shown: a selection, not a rate.",
+    "quotes": [
+      { "model": "SatMAE", "year": 2022, "arxiv": "2207.08051", "excerpt": "…strong improvements over previous state-of-the-art techniques…" },
+      { "model": "Scale-MAE", "year": 2022, "arxiv": "2212.14532", "excerpt": "…compared to current state-of-the-art…" },
+      { "model": "GFM", "year": 2023, "arxiv": "2302.04476", "excerpt": "…outperforms previous state-of-the-art geospatial pretraining methods…" },
+      { "model": "CROMA", "year": 2023, "arxiv": "2311.00566", "excerpt": "CROMA outperforms the current SoTA multispectral model…" },
+      { "model": "RemoteCLIP", "year": 2023, "arxiv": "2306.11029", "excerpt": "RemoteCLIP beats the state-of-the-art method…" },
+      { "model": "OmniSat", "year": 2024, "arxiv": "2404.08351", "excerpt": "…leading to state-of-the-art performances…" },
+      { "model": "AnySat", "year": 2024, "arxiv": "2412.14123", "excerpt": "…we reach state-of-the-art results on the test sets…" },
+      { "model": "Galileo", "year": 2025, "arxiv": "2502.09356", "excerpt": "…a single generalist model that outperforms SoTA specialist models…" },
+      { "model": "Panopticon", "year": 2025, "arxiv": "2503.10845", "excerpt": "…we achieve state-of-the-art performance on GEO-Bench…" },
+      { "model": "TerraMind", "year": 2025, "arxiv": "2504.11171", "excerpt": "TerraMind achieves beyond state-of-the-art performance…" },
+      { "model": "DOFA-CLIP", "year": 2025, "arxiv": "2503.06312", "excerpt": "DOFA-CLIP achieves state-of-the-art zero-shot performance…" }
+    ]
+  }
+}

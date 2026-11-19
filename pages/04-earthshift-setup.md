@@ -1,18 +1,28 @@
 ---
-layout: section
+layout: default
 ---
 
-<div class="kicker">Part 3 · ~20 min</div>
+<ShiftingGlobe />
+
+<div class="relative z-10">
+<div class="kicker">Part 3</div>
 
 # EarthShift
 
-A benchmark for robustness to real-world distribution shifts in Earth observation
+<div class="muted text-lg">A benchmark for robustness to real-world distribution shifts in Earth observation</div>
+</div>
+
+<!--
+The animation loops on its own: the deployment (OOD) distribution slides away from the training (ID) one,
+once for each of the five shift types. For "Geographic" an arc flies from Germany to Cambodia; for the others the
+same place turns orange (same place, different data). Illustration only: the curves are not results.
+-->
 
 ---
 layout: center
 ---
 
-# The question
+# The research question
 
 <div class="text-3xl mt-6 leading-snug">
 When a model is good <span class="id">in-distribution</span>,<br>
@@ -22,15 +32,47 @@ When a model is good <span class="id">in-distribution</span>,<br>
 <div v-click class="mt-10 muted">Measure it with real, paired datasets instead of synthetic corruptions.</div>
 
 ---
+clicks: 2
+---
+
+# Deployment is out-of-distribution
+
+<div class="grid grid-cols-3 gap-8 items-center mt-6">
+  <BigNumber :value="30" suffix="%" label="drop in building-damage accuracy at a new disaster site" :step="$clicks" :at="1" />
+<div v-click="2" class="col-span-2 text-lg">
+
+- Field delineation models fail in new countries with different farming and climate patterns (Kerner et al., 2023)
+- "Satellite data is a distinct modality in machine learning" (Rolf et al., ICML 2024)
+- Most robustness work uses **synthetic** shifts (noise, clouds, blur), and robustness to those does not represent robustness to **natural** shifts (Taori et al., 2020)
+
+</div>
+</div>
+
+<div class="cite">Building-damage figure: Benson &amp; Ecker, 2020, as cited in EarthShift §2.</div>
+
+---
+clicks: 2
+---
+
+# In-distribution vs out-of-distribution
+
+<IdOodIntro :step="$clicks" />
+
+<!--
+Click 0: train a field-boundary model on Germany. Click 1: test it on more of Germany: that's in-distribution (ID).
+Click 2: test it on Cambodia: out-of-distribution (OOD). Benchmarks usually report the first; deployment looks like the second.
+-->
+
+---
 clicks: 5
 ---
 
 # Five kinds of real-world shift
 
-<ShiftGallery :step="$clicks" :size="150" />
+<ShiftPairs :step="$clicks" />
 
 <!--
-[21:00–23:00] One shift per click; each tile loops ID ↔ OOD on its own.
+[21:00–23:00] One shift per click; static ID (top) → OOD (bottom) pairs.
 Scale: coarse → fine (and back). Temporal: same place, other year. Geographic: other country.
 Sensor: optical → SAR (disaster response: S1 sees through clouds). Processing: L2A → L1C (no time for atmospheric correction).
 -->

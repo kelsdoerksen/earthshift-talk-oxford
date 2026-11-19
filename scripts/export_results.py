@@ -72,7 +72,8 @@ def main():
     rows = []  # (shift, task, model, protocol, id, ood)
     missing = set()
     for path, proto in zip(files, protos):
-        with open(path, newline="") as f:
+        # utf-8-sig drops a BOM; errors="replace" tolerates stray non-UTF-8 bytes in spreadsheet exports
+        with open(path, newline="", encoding="utf-8-sig", errors="replace") as f:
             for r in csv.DictReader(f):
                 model = r[args.model_col].strip()
                 if model.lower() in EXCLUDE:
