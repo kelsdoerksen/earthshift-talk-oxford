@@ -19,6 +19,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,8 +27,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # download: true in slides.md exports a PDF during the build, which needs Chromium
-      - run: npx playwright install --with-deps chromium
       - run: npm run build -- --base /${{ github.event.repository.name }}/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
@@ -37,6 +36,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

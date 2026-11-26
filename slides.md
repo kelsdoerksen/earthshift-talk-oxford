@@ -10,7 +10,7 @@ aspectRatio: 16/9
 canvasWidth: 980
 transition: slide-left
 mdc: true
-download: true
+download: false
 exportFilename: earthshift-talk
 fonts:
   provider: none
