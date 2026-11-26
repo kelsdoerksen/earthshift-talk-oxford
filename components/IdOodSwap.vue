@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // Cross-fades an ID tile into its OOD counterpart.
 // mode="step": OOD shows once `step >= at` (drive with :step="$clicks").
 // mode="auto": loops ID <-> OOD every `interval` ms (good for galleries).
@@ -24,7 +25,7 @@ onMounted(() => {
 onUnmounted(() => timer && clearInterval(timer))
 
 const showOod = computed(() => props.mode === 'auto' ? tick.value : props.step >= props.at)
-const src = (name: string) => name.startsWith('/') || name.startsWith('http') ? name : `/tiles/${name}.png`
+const src = (name: string) => name.startsWith('/') || name.startsWith('http') ? asset(name) : asset(`/tiles/${name}.png`)
 </script>
 
 <template>

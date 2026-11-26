@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // GFM design choices (after Kelsey's TreeSense talk, slide 8), one per click, each drawn with EarthShift tiles.
 // At step >= tagAt every choice gets the EarthShift shift type it sets up (SHIFT_COLORS), to foreshadow Part 3.
 import { SHIFT_COLORS } from '../utils/csv'
@@ -13,7 +14,7 @@ const choices = [
   { q: 'What preprocessing?', shift: 'Processing', kind: 'proc', a: 'cloudsen12_l1c_ood', b: 'cloudsen12_l2a_id', note: 'processing level, normalisation' },
   { q: 'Where on Earth?', shift: 'Geographic', kind: 'pair', a: 'ftw_germany_image_id', b: 'ftw_cambodia_image_ood', note: 'what the pretraining data covers' },
 ]
-const src = (n: string) => `/tiles/clean/${n}.png`  // badge-free crops of the EarthShift tiles
+const src = (n: string) => asset(`/tiles/clean/${n}.png`)  // badge-free crops of the EarthShift tiles
 </script>
 
 <template>

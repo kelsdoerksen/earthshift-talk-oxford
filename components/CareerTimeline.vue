@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // Career journey from data/career.json. One stop per click; the latest stop is emphasised.
 // Each stop can carry a photo (public/photos) and/or the small orbiting-satellites globe.
 // Slide: `clicks: <number of stops>`, :step="$clicks".
@@ -28,7 +29,7 @@ const progress = computed(() => Math.min(1, Math.max(0, (props.step - 1) / Math.
         <div class="role" :class="{ todo: isTodo(s.role) }">{{ s.role }}</div>
         <div class="line" :class="{ todo: isTodo(s.line) }">{{ s.line }}</div>
         <div class="media">
-          <img v-if="s.photo" :src="`/photos/${s.photo}`" class="photo" :style="{ objectPosition: s.photoPos || '50% 50%' }" :alt="s.org">
+          <img v-if="s.photo" :src="asset(`/photos/${s.photo}`)" class="photo" :style="{ objectPosition: s.photoPos || '50% 50%' }" :alt="s.org">
           <MiniOrbitGlobe v-if="s.globe" :size="104" class="globe" />
         </div>
       </div>

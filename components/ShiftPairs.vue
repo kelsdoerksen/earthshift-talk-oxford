@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // The five EarthShift shift types as static ID → OOD pairs (no looping), one column per click (step >= i + 1).
 // Tiles from public/tiles (paper Fig. 1); shift names in SHIFT_COLORS.
 import { SHIFT_COLORS } from '../utils/csv'
@@ -19,10 +20,10 @@ const shifts = [
     <div v-for="(s, i) in shifts" :key="s.name" class="col" :class="{ on: step >= i + 1 }">
       <div class="name" :style="{ color: SHIFT_COLORS[s.name] }">{{ s.name }}</div>
       <div class="what muted">{{ s.what }}</div>
-      <img :src="`/tiles/${s.id}.png`" :width="size" :height="size" :alt="`${s.idc} (ID)`">
+      <img :src="asset(`/tiles/${s.id}.png`)" :width="size" :height="size" :alt="`${s.idc} (ID)`">
       <div class="cap id">{{ s.idc }}</div>
       <svg width="24" height="30" viewBox="0 0 24 30" class="down"><path d="M12 2 V24 M4 17 L12 27 L20 17" fill="none" :stroke="SHIFT_COLORS[s.name]" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-      <img :src="`/tiles/${s.ood}.png`" :width="size" :height="size" :alt="`${s.oodc} (OOD)`">
+      <img :src="asset(`/tiles/${s.ood}.png`)" :width="size" :height="size" :alt="`${s.oodc} (OOD)`">
       <div class="cap ood">{{ s.oodc }}</div>
     </div>
   </div>

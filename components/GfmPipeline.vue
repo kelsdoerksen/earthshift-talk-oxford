@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // What a geospatial foundation model is, and the ways to use one (after Kelsey's TreeSense talk, slides 4-6).
 // phase: 0 pretraining tiles · 1 + network · 2 + embedding box
 // head:  'none' · 'knn' (frozen, no training: vote of labelled neighbours)
@@ -43,7 +44,7 @@ const headTrained = computed(() => props.head === 'linear' || props.head === 'fi
     <g class="fade" :style="{ opacity: phase >= 0 ? 1 : 0 }">
       <g v-for="t in tiles" :key="t.src">
         <rect :x="t.x - 2" :y="t.y - 2" width="92" height="92" fill="white" />
-        <image :href="`/tiles/clean/${t.src}.png`" :x="t.x" :y="t.y" width="88" height="88" preserveAspectRatio="xMidYMid slice" />
+        <image :href="asset(`/tiles/clean/${t.src}.png`)" :x="t.x" :y="t.y" width="88" height="88" preserveAspectRatio="xMidYMid slice" />
       </g>
       <text x="80" y="268" text-anchor="middle" class="lbl b">Large unlabeled</text>
       <text x="80" y="286" text-anchor="middle" class="lbl">pretraining data</text>

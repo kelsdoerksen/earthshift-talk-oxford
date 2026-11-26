@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // EuroSAT, introduced as in slide 10 (beats 1-2) of H. Kerner's "State of GeoAI" deck (SatSummit 2026):
 // step 0: one EuroSAT image (Sentinel-2, a river) · step >= 1: the 13-band stack beside it ("RGB is 3 of them").
 // Data: data/eurosat_probe.json (bands, classes); image: public/eurosat.
@@ -15,7 +16,7 @@ const layers = Array.from({ length: NB }, (_, k) => NB - k)
       <div class="bands" :class="{ on: step >= 1 }">
         <svg :width="LS + NB * OX + 4" :height="LS + NB * OY + 4" class="stack">
           <rect v-for="b in layers" :key="b" :x="b * OX" :y="(NB - b) * OY" :width="LS" :height="LS" rx="2" fill="#f6f4ee" stroke="#3b1e1c" stroke-width="1.5" />
-          <image :href="`/eurosat/${D.hero.id}.jpg`" x="0" :y="NB * OY" :width="LS" :height="LS" style="image-rendering: pixelated" />
+          <image :href="asset(`/eurosat/${D.hero.id}.jpg`)" x="0" :y="NB * OY" :width="LS" :height="LS" style="image-rendering: pixelated" />
           <rect x="0" :y="NB * OY" :width="LS" :height="LS" rx="2" fill="none" stroke="#3b1e1c" stroke-width="2" />
         </svg>
         <div class="txt">
@@ -29,7 +30,7 @@ const layers = Array.from({ length: NB }, (_, k) => NB - k)
         <span v-for="c in D.classes" :key="c" class="chip">{{ c }}</span>
       </div>
     </div>
-    <img :src="`/eurosat/${D.hero.id}.jpg`" class="big" alt="A EuroSAT image: a river, Sentinel-2">
+    <img :src="asset(`/eurosat/${D.hero.id}.jpg`)" class="big" alt="A EuroSAT image: a river, Sentinel-2">
   </div>
 </template>
 

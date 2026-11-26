@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // Hook slide: the two BRIGHT earthquakes used in EarthShift's geographic shift.
 // ID = Kahramanmaraş (Turkey–Syria) earthquake, OOD = Al Haouz (Morocco) earthquake (EarthShift paper, task list).
 // step 0: the ID site · step >= arcAt: an arc flies to the OOD site, which lights up.
@@ -15,7 +16,7 @@ const SITES = {
   id: { v: lonLat(36.94, 37.58), name: 'Kahramanmaraş, Türkiye–Syria', tag: 'Train (ID)', tile: 'bright_turkey_rgb_id' },
   ood: { v: lonLat(-8.39, 31.06), name: 'Al Haouz, Morocco', tag: 'Deploy (OOD)', tile: 'bright_morocco_rgb_ood' },
 }
-const img = (n: string) => { const i = new Image(); i.src = `/tiles/clean/${n}.png`; return i }
+const img = (n: string) => { const i = new Image(); i.src = asset(`/tiles/clean/${n}.png`); return i }
 const IMG = { id: img(SITES.id.tile), ood: img(SITES.ood.tile) }
 
 function label(g: CanvasRenderingContext2D, lines: [string, string, number][], x: number, y: number, align: CanvasTextAlign) {

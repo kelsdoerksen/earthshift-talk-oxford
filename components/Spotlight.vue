@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // Shows a static figure and dims everything except one region per click.
 // spots: [{ x, y, w, h, at, label }] in % of the image box; the spot with the
 // largest `at` <= step is shown. Great for walking through paper figures.
@@ -13,7 +14,7 @@ const active = computed(() => [...props.spots].filter(s => s.at <= props.step).s
 
 <template>
   <div class="spot-wrap" :style="{ width }">
-    <img :src="src" class="fig" alt="">
+    <img :src="asset(src)" class="fig" alt="">
     <div
       v-if="active" class="spot"
       :style="{ left: active.x + '%', top: active.y + '%', width: active.w + '%', height: active.h + '%' }"

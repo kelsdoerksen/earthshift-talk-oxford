@@ -33,7 +33,7 @@ import npj from '../data/npj_numbers.json'
 
 <div class="grid gap-6 mt-2 items-start" style="grid-template-columns: 1.15fr 1fr">
 <figure class="m-0">
-  <img src="/figures/npj/fig1_context.png" class="w-full" alt="Fig. 1: Nepal elevation, landslide impacts in 2023 and 2024, population, impacts per year and per month">
+  <img :src="$asset('/figures/npj/fig1_context.png')" class="w-full" alt="Fig. 1: Nepal elevation, landslide impacts in 2023 and 2024, population, impacts per year and per month">
   <figcaption class="text-xs muted mt-1">Fig. 1: study region, recorded landslide impacts (2023, 2024), population, impacts by year and by month (Bipad Portal).</figcaption>
 </figure>
 <div class="text-base space-y-4">
@@ -69,7 +69,7 @@ import npj from '../data/npj_numbers.json'
   <div v-click="5"><b>→ Explainable by default.</b> Satellite embeddings (LandslideNet) feed a Random Forest, which gives feature importances.</div>
 </div>
 <figure class="m-0">
-  <img src="/figures/npj/fig2_method.png" class="w-full" style="max-height: 395px; object-fit: contain" alt="Fig. 2: data extraction, LandslideNet embeddings, feature combination, district-level prediction">
+  <img :src="$asset('/figures/npj/fig2_method.png')" class="w-full" style="max-height: 395px; object-fit: contain" alt="Fig. 2: data extraction, LandslideNet embeddings, feature combination, district-level prediction">
   <figcaption class="text-xs muted mt-1">Fig. 2: data cube → LandslideNet embeddings → decision-tree classifier → district map.</figcaption>
 </figure>
 </div>
@@ -89,7 +89,7 @@ import npj from '../data/npj_numbers.json'
 
 # Does it work through the monsoon?
 
-<img src="/figures/npj/fig5_f1_monsoon.png" class="w-full mt-2" alt="Fig. 5: daily F1 through the 2023 and 2024 monsoon seasons">
+<img :src="$asset('/figures/npj/fig5_f1_monsoon.png')" class="w-full mt-2" alt="Fig. 5: daily F1 through the 2023 and 2024 monsoon seasons">
 
 <div v-click="1" class="takeaway mt-4 text-lg">Trained on {{ npj.setup.train_years }}, tested on {{ npj.setup.test_years }}: F1 of {{ npj.results.monsoon_f1 }} from {{ npj.results.monsoon_months }}, when most impacts happen.</div>
 
@@ -197,7 +197,7 @@ class: text-center
 
 # Thank you
 
-<img src="/photos/headshot.jpg" class="headshot mt-4" alt="Dr. Kelsey Doerksen">
+<img :src="$asset('/photos/headshot.jpg')" class="headshot mt-4" alt="Dr. Kelsey Doerksen">
 
 <div class="mt-4 text-xl font-bold">Dr. Kelsey Doerksen</div>
 <div class="muted">ASU · University of Cape Town · Climate Risk Lab</div>

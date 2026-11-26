@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // Part 2 opener: satellites circle a turning dot-globe, imaging the land under them (it lights up, then fades).
 // Each image flies into a neural network, a pulse runs through it, and lights up an application on the right.
 // Real-time loop (keeps moving while the slide rests). Orbits and timings are schematic, not real satellites.
@@ -16,7 +17,7 @@ let raf = 0
 
 const BLUE = '#2b7bd8', INK = '#1f2328', EDGE = '#d5dae1'
 const TILES = ['ftw_germany_image_id', 'rpg_2017_id', 'sen1floods11_s2_id', 'chesapeake_naip_ood', 'ftw_cambodia_image_ood', 'cloudsen12_l2a_id', 'rpg_2022_ood']
-  .map((n) => { const im = new Image(); im.src = `/tiles/clean/${n}.png`; return im })
+  .map((n) => { const im = new Image(); im.src = asset(`/tiles/clean/${n}.png`); return im })
 
 const G: GlobeStyle = { cx: 225, cy: 336, r: 150, spin: 0, tilt: 0.32 }
 const ORB = 1.3

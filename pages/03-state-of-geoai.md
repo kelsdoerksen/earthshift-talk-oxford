@@ -187,7 +187,7 @@ clicks: 4
 </div>
 <figure class="m-0">
   <div class="text-sm font-bold" style="color: var(--accent)">AI × sustainability lens: compute cost</div>
-  <img src="/figures/external/olmoearth_fig1_macs.png" class="w-full mt-1" alt="OlmoEarth Fig. 1: average score vs multiply-accumulate operations per example">
+  <img :src="$asset('/figures/external/olmoearth_fig1_macs.png')" class="w-full mt-1" alt="OlmoEarth Fig. 1: average score vs multiply-accumulate operations per example">
   <figcaption class="text-xs muted mt-1">OlmoEarth paper, Fig. 1: average score vs multiply-accumulate operations to encode one example (log x axis).</figcaption>
 </figure>
 </div>

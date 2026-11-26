@@ -17,6 +17,10 @@ A 45-minute Slidev talk: (1) Kelsey's path into geospatial AI, (2) the state of 
 - `data/`: the only place numbers come from (see the rules below)
 - `public/tiles/`: 30 ID/OOD/label tiles cropped from paper Fig. 1 (`clean/`: badge-free crops) · `public/figures/paper/`: Figs. 1–3 · `public/figures/external/`: third-party figures
 - `utils/csv.ts`: CSV parser, scale helpers, shift and family colours
+- `utils/asset.ts`: `asset('/tiles/x.png')` prefixes public/ paths with the base URL. **Always use it**
+  (in components: `import { asset }`; in markdown: `<img :src="$asset('/figures/x.png')">`, registered in
+  `setup/main.ts`). A bare `/tiles/...` path breaks on GitHub Pages, which serves from `/<repo>/`. `<Spotlight src>` applies it itself.
+- `.github/workflows/deploy.yml`: builds and publishes to GitHub Pages on every push to `main`
 
 ## Hard rules
 1. **Never type a result number into a slide.** Numbers come from `data/paper_numbers.json`

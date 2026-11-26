@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // What "in-distribution" and "out-of-distribution" mean, with static EarthShift tiles (FTW field boundaries).
 // step 0: train on Germany → model · 1: ID test (Germany) + definition · 2: OOD test (Cambodia) + definition
 // Static images; only fades on click. Default step 99 = everything shown.
@@ -19,18 +20,18 @@ const props = withDefaults(defineProps<{ step?: number }>(), { step: 99 })
     </svg>
 
     <figure class="tile" style="left: 0; top: 108px">
-      <img src="/tiles/ftw_germany_image_id.png" width="164" alt="FTW Germany training tile">
+      <img :src="asset('/tiles/ftw_germany_image_id.png')" width="164" alt="FTW Germany training tile">
       <figcaption><b>Train</b> on fields in Germany</figcaption>
     </figure>
 
     <div class="model" style="left: 240px; top: 150px">Model</div>
 
     <figure class="tile fade" :class="{ on: step >= 1 }" style="left: 466px; top: 40px">
-      <img src="/tiles/ftw_germany_2018_id.png" width="130" alt="FTW Germany test tile">
+      <img :src="asset('/tiles/ftw_germany_2018_id.png')" width="130" alt="FTW Germany test tile">
       <figcaption class="id">Test: more of Germany</figcaption>
     </figure>
     <figure class="tile fade" :class="{ on: step >= 2 }" style="left: 466px; top: 220px">
-      <img src="/tiles/ftw_cambodia_image_ood.png" width="130" alt="FTW Cambodia test tile">
+      <img :src="asset('/tiles/ftw_cambodia_image_ood.png')" width="130" alt="FTW Cambodia test tile">
       <figcaption class="ood">Test: Cambodia</figcaption>
     </figure>
 

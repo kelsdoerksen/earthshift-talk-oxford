@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // "Embeddings in action": a frozen GFM (DINOv2 ViT-S/14) turns EuroSAT images into 384 numbers; those land as dots on a
 // 2-D map (t-SNE detail); a new image is labelled by k-NN, by a linear probe, or by fine-tuning.
 // Port of slide 11 (beats 1-12) of H. Kerner's "State of GeoAI" deck (Taylor Geospatial, SatSummit 2026), drawn from the
@@ -21,7 +22,7 @@ const SLOT = { x: 120, a: 586, b: 652, c: 764 }
 const MID = TILE.y + TILE.s / 2
 const COL: Record<string, string> = { River: '#7b9bd9', Highway: '#3b1e1c', Pasture: '#6aa84f' }
 const KNOWN = D.knn.neighbours.slice(0, 3)            // the deck's known images = our image's 3 nearest
-const img = (id: string) => `/eurosat/${id}.jpg`
+const img = (id: string) => asset(`/eurosat/${id}.jpg`)
 
 // ---------------- the map: one scale for x and y, fitted to the coloured classes + our image
 type P = { id: string; label: string; x: number; y: number }

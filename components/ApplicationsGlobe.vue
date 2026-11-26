@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { asset } from '../utils/asset'
 // The research question slide: a turning dot-globe with five real-world applications around it, each shown with an
 // EarthShift tile. Tiles arrive one after another, then a pulse runs from the globe to each application in turn and
 // highlights it. Real-time loop; purely illustrative (no data).
@@ -17,7 +18,7 @@ const APPS = [
   { name: 'Crop mapping', tile: 'rpg_2017_id', x: 490, y: 506, lab: 'left' },
   { name: 'Cloud segmentation', tile: 'cloudsen12_l2a_id', x: 740, y: 462, lab: 'below' },
   { name: 'Image classification', tile: 'resisc45_harbor_id', x: 835, y: 300, lab: 'below' },
-].map(a => ({ ...a, img: Object.assign(new Image(), { src: `/tiles/clean/${a.tile}.png` }) }))
+].map(a => ({ ...a, img: Object.assign(new Image(), { src: asset(`/tiles/clean/${a.tile}.png`) }) }))
 const CYCLE = 1.6
 
 function frame(ms: number) {
